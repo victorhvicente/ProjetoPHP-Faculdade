@@ -98,7 +98,7 @@
 
     //Atualiza os dados de algum cliente registrado
 
-    $idUpdate = 2;
+    $idUpdate = 44444;
     $novo_nome = "Victor Hugo";
     $novo_cpf = "11111111111";
     $novo_email = "vic@totmail.com";
@@ -112,7 +112,7 @@
 
     //Excluir um determinado Cliente pelo ID
 
-    $idDelete = 4;
+    $idDelete = 33344;
 
     if ($bdClientes->delete($idDelete)) {
         echo "<h2>Cliente do ID: " . $idDelete . " excluido" . "</h2>";
