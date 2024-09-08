@@ -71,7 +71,7 @@
     }
 
     //Exibe os dados de um determinado cliente pela busca do ID
-    $id = 1;
+    $id = 333;
 
     $clienteID = $bdClientes->recoveryById($id);
     if($clienteID){
@@ -95,18 +95,26 @@
 
     //Atualiza os dados de algum cliente registrado
 
-    $id = 3;
+    $idUpdate = 2;
     $novo_nome = "Victor Hugo";
     $novo_cpf = "11111111111";
     $novo_email = "vic@totmail.com";
 
-    $cliUpdate = $bdClientes->update($id, $novo_nome, $novo_cpf, $novo_email);
-
-    if($cliUpdate){
-        echo "<h2>Dados do cliente Atualizado do ID: " . $id . "</h2>";
+    if($bdClientes->update($idUpdate, $novo_nome, $novo_cpf, $novo_email)){
+        echo "<h2>Dados do cliente Atualizado do ID: " . $idUpdate . "</h2>";
     }
     else{
         echo "Erro ao atualizar novos dados do cliente.";
+    }
+
+    //Excluir um determinado Cliente pelo ID
+
+    $idDelete = 4;
+
+    if ($bdClientes->delete($idDelete)) {
+        echo "<h2>Cliente do ID: " . $idDelete . " excluido" . "</h2>";
+    } else {
+        echo "Erro ao excluir cliente.";
     }
 
     ?>

@@ -133,13 +133,31 @@ class DBClientes {
             }
         }
         catch (PDOException $e) {
-            // Exibir mensagem de erro e retornar false em caso de exceção
             echo "Erro ao atualizar cliente: " . $e->getMessage();
         }
     }
 
     public function delete($id) {
-        // excluir do banco o cliente com id - DELETE
+        
+        $query = "DELETE FROM " . $this->tableName . " WHERE id = :id";
+
+        try {
+            $result = $this->conexao->prepare($query);
+
+            $result->bindParam(":id", $id, PDO::PARAM_INT);
+
+            $result->execute();
+
+            if ($result->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+            
+        }
+        catch (PDOException $e) {
+            echo "Erro ao excluir cliente: " . $e->getMessage();
+        }
     }
 }
 
