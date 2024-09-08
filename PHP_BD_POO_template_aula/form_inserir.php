@@ -21,9 +21,14 @@
 
     <?php
     require_once  "Database.php";
+    
     $bd = new Database('localhost', 'banco_sistema', 'root', '');
-    if($bd){
-        echo "Conexão feita!";
+    $conexao = $bd->getConnection();
+
+    if ($conexao) {
+        echo "Conexão feita!<br>";
+    } else {
+        echo "Erro ao conectar ao banco de dados.<br>";
     }
 
     // Verifica se o formulário foi submetido
@@ -34,15 +39,13 @@
         $cpf = $_POST['cpf'];
         $email = $_POST['email'];
 
-        $bdClientes = new DBClientes();
+        $bdClientes = new DBClientes($conexao);
         if ($bdClientes->create($id, $nome, $cpf, $email)) {
             echo "Cliente inserido com sucesso !!!";
         }
         else {
             echo "Erro ao incluir cliente.";
         }
-
-
 
         // Exibe os dados
         echo "<h2>Dados Recebidos:</h2>";
@@ -51,6 +54,61 @@
         echo "CPF: " . $cpf . "<br>";
         echo "Email: " . $email . "<br>";
     }
+
+    // Exibe uma lista de todos os clientes registrados na tabela clientes
+
+    $listaClientes = $bdClientes->recovery();
+    if($listaClientes){
+        echo "<h2>Lista de Clientes</h2>";
+        echo "<ul>";
+        foreach($listaClientes as $cliente){
+            echo "<li>ID: " . $cliente['id'] . " - Nome: " . $cliente['nome'] . " - CPF: " . $cliente['cpf'] . " - Email: " . $cliente['email'] . "</li>";
+        }
+        echo "</ul>";
+    }
+    else {
+        echo "Erro ao exibir lista de clientes";
+    }
+
+    //Exibe os dados de um determinado cliente pela busca do ID
+    $id = 1;
+
+    $clienteID = $bdClientes->recoveryById($id);
+    if($clienteID){
+        echo "<h2>Dados do cliente pelo ID</h2>";
+        echo "<li>ID: " . $clienteID['id'] . " - Nome: " . $clienteID['nome'] . " - CPF: " . $clienteID['cpf'] . " - Email: " . $clienteID['email'] . "</li>";
+    }
+    else {
+        echo "Erro ao exibir dados do cliente ID: " . $id;
+    }
+
+    //Exibe os dados de um determinado cliente pela busca do NOME
+    $nome = "victor ";
+
+    $clienteNome = $bdClientes->recoveryByName($nome);
+    if($clienteNome){
+        echo "<h2>Dados do cliente pelo NOME</h2>";
+        foreach($clienteNome as $cliNome){
+            echo "<li>ID: " . $cliNome['id'] . " - Nome: " . $cliNome['nome'] . " - CPF: " . $cliNome['cpf'] . " - Email: " . $cliNome['email'] . "</li>";
+        }
+    }
+
+    //Atualiza os dados de algum cliente registrado
+
+    $id = 3;
+    $novo_nome = "Victor Hugo";
+    $novo_cpf = "11111111111";
+    $novo_email = "vic@totmail.com";
+
+    $cliUpdate = $bdClientes->update($id, $novo_nome, $novo_cpf, $novo_email);
+
+    if($cliUpdate){
+        echo "<h2>Dados do cliente Atualizado do ID: " . $id . "</h2>";
+    }
+    else{
+        echo "Erro ao atualizar novos dados do cliente.";
+    }
+
     ?>
 </body>
 </html>
