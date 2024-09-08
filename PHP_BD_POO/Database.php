@@ -36,20 +36,27 @@ class DBClientes {
 
     public function create($id, $nome, $cpf, $email) {
         
-        $query = "INSERT INTO " . $this->tableName . "(id, nome, cpf, email) VALUES (:id, :nome, :cpf, :email)";
+        $query = "INSERT INTO " . $this->tableName . " (id, nome, cpf, email) VALUES (:id, :nome, :cpf, :email)";
 
-        try{
+        try {
+
             $result = $this->conexao->prepare($query);
-    
-            $result->bindParam(":id", $id);
-            $result->bindParam(":nome", $nome);
-            $result->bindParam(":cpf", $cpf);
-            $result->bindParam(":email", $email);
-    
-            $result->execute();
-        }
-        catch(PDOException $e){
-            echo "Erro com PDO." . $e->getMessage();
+
+            $result->bindParam(':id', $id);
+            $result->bindParam(':nome', $nome);
+            $result->bindParam(':cpf', $cpf);
+            $result->bindParam(':email', $email);
+
+            // Capturar os erros de execução
+            if ($result->execute()) {
+                return true;
+            } else {
+                $errorInfo = $result->errorInfo();
+                echo "Erro ao executar a query: " . $errorInfo[2];
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "Erro PDO: " . $e->getMessage();
         }
       
     }

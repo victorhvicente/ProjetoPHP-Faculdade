@@ -56,7 +56,7 @@
     }
 
     // Exibe uma lista de todos os clientes registrados na tabela clientes
-
+    $bdClientes = new DBClientes($conexao);
     $listaClientes = $bdClientes->recovery();
     if($listaClientes){
         echo "<h2>Lista de Clientes</h2>";
@@ -92,6 +92,9 @@
             echo "<li>ID: " . $cliNome['id'] . " - Nome: " . $cliNome['nome'] . " - CPF: " . $cliNome['cpf'] . " - Email: " . $cliNome['email'] . "</li>";
         }
     }
+    else {
+        echo "Erro ao exibir dados do cliente NOME: " . $nome . "Necessário Atualizar a variável" . "<br>";
+    }
 
     //Atualiza os dados de algum cliente registrado
 
@@ -104,7 +107,7 @@
         echo "<h2>Dados do cliente Atualizado do ID: " . $idUpdate . "</h2>";
     }
     else{
-        echo "Erro ao atualizar novos dados do cliente.";
+        echo "Erro ao atualizar novos dados do cliente. Necessário Atualizar a variável" . "<br>";
     }
 
     //Excluir um determinado Cliente pelo ID
@@ -114,8 +117,9 @@
     if ($bdClientes->delete($idDelete)) {
         echo "<h2>Cliente do ID: " . $idDelete . " excluido" . "</h2>";
     } else {
-        echo "Erro ao excluir cliente.";
+        echo "Erro ao excluir cliente. Necessário Atualizar a variável" . "<br>";
     }
+
 
     ?>
 </body>
