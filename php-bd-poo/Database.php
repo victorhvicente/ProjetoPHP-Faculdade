@@ -98,12 +98,25 @@ class DBClientes {
             }
         }
         catch(PDOException $e){
-            echo "Erro ao recuperar cliente: " . $e->getMessage();
+            echo "Erro ao recuperar cliente pelo ID. " . $e->getMessage();
         }
     }
 
     public function recoveryByName($nomeBusca) {
-        // retorna a linha da tabela com o nome igual
+        $query = " SELECT * FROM " . $this->table . " WHERE nome = :nome";
+
+        try{
+            $result = $this->conexao->prepare($query);
+            $result->bindParam(":nome", $nomeBusca)
+            $result->execute();
+
+            $cliente = $result->fetch(PDO::FETCH_ASSOC);
+        }
+        catch(PDOException $e){
+            echo "Erro ao recuperar cliente pelo nome. " . $e->getMessage();
+        }
+
+        return $cliente;
     }
 
     public function update($id, $nome, $CPF, $email) {
