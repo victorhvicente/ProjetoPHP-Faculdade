@@ -134,6 +134,7 @@ class DBClientes {
         try{
             $result = $this->conexao->prepare($query);
 
+            $result->bindParam(":id", $id);
             $result->bindParam(":nome", $nome);
             $result->bindParam(":cpf", $cpf);
             $result->bindParam(":email", $email);

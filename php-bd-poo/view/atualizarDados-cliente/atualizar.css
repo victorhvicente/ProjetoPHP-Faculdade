@@ -1,4 +1,4 @@
-/* Definições globais */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
@@ -11,7 +11,7 @@ body {
     height: 100vh;
 }
 
-/* Estilo do contêiner principal */
+
 .container {
     background-color: white;
     padding: 25px;
@@ -21,7 +21,7 @@ body {
     width: 100%;
 }
 
-/* Estilo do formulário */
+
 .form-atualizar {
     display: flex;
     flex-direction: column;
@@ -34,7 +34,6 @@ h2 {
     text-align: center;
 }
 
-/* Estilo dos campos de entrada */
 .input-field {
     padding: 12px;
     font-size: 16px;
@@ -49,7 +48,6 @@ h2 {
     outline: none;
 }
 
-/* Estilo do botão de envio */
 .submit-btn {
     background-color: #6c63ff;
     color: white;
@@ -65,7 +63,6 @@ h2 {
     background-color: #5753e3;
 }
 
-/* Remover aparência de bordas ao clicar no campo */
 input[type="text"], input[type="email"] {
     -webkit-appearance: none;
     -moz-appearance: none;
