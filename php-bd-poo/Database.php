@@ -103,14 +103,21 @@ class DBClientes {
     }
 
     public function recoveryByName($nomeBusca) {
-        $query = " SELECT * FROM " . $this->table . " WHERE nome = :nome";
+        $query = " SELECT * FROM " . $this->tableName . " WHERE nome = :nome";
 
         try{
             $result = $this->conexao->prepare($query);
-            $result->bindParam(":nome", $nomeBusca)
+            $result->bindParam(":nome", $nomeBusca);
             $result->execute();
 
             $cliente = $result->fetch(PDO::FETCH_ASSOC);
+
+            if ($cliente) {
+                return $cliente;
+            } else {
+                echo "Cliente não encontrado.";
+                return null;
+            }
         }
         catch(PDOException $e){
             echo "Erro ao recuperar cliente pelo nome. " . $e->getMessage();
