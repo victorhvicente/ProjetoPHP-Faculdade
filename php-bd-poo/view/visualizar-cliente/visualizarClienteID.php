@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet">
+    <link href="visualizar.css" rel="stylesheet">
     <title>Buscar cliente por ID</title>
 </head>
 <body>
-    <div id="listaClientes">
-        <form method="POST" action="">
+    <div id="listaClientes" >
+        <form method="POST" action="" >
             <h2>Informe o ID do cliente</h2>
             <input type="text"  id="id" name="id" placeholder="id"><br><br>
             <button type="submit">Buscar Cliente</button>

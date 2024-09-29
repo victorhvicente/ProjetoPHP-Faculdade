@@ -107,7 +107,9 @@ class DBClientes {
 
         try{
             $result = $this->conexao->prepare($query);
+
             $result->bindParam(":nome", $nomeBusca);
+            
             $result->execute();
 
             $cliente = $result->fetch(PDO::FETCH_ASSOC);
@@ -126,8 +128,28 @@ class DBClientes {
         return $cliente;
     }
 
-    public function update($id, $nome, $CPF, $email) {
-        // atualiza o ID com os dados do paramentro - UPDATE
+    public function update($id, $nome, $cpf, $email) {
+        $query = " UPDATE " . $this->tableName . " SET nome = :nome, cpf = :cpf, email = :email WHERE id = :id ";
+
+        try{
+            $result = $this->conexao->prepare($query);
+
+            $result->bindParam(":nome", $nome);
+            $result->bindParam(":cpf", $cpf);
+            $result->bindParam(":email", $email);
+
+            $result->execute();
+
+             // Verificar o número de linhas afetadas para determinar se a atualização foi bem-sucedida
+             if ($result->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        catch (PDOException $e) {
+            echo "Erro ao atualizar cliente: " . $e->getMessage();
+        }
     }
 
     public function delete($id) {
