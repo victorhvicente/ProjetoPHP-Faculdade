@@ -40,7 +40,7 @@
             if (!empty($listaClientes)) {
                 echo "<ul>";
                 foreach ($listaClientes as $cliente) {
-                    echo "<li>ID: " . $cliente['id'] . " - Nome: " . $cliente['nome'] . " - CPF: " . $cliente['cpf'] . " - Email: " . $cliente['email'] . "</li>";
+                    echo "<li class='li-cli'>ID: " . $cliente['id'] . " - Nome: " . $cliente['nome'] . " - CPF: " . $cliente['cpf'] . " - Email: " . $cliente['email'] . "</li>";
                 }
                 echo "</ul>";
             } else {

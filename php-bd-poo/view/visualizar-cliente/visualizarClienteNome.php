@@ -51,7 +51,7 @@
 
             if($cliente){
                 echo "<h2>Dados do cliente</h2>";
-                echo "<p>ID: " . $cliente['id'] . "- Nome: " . $cliente['nome'] . "- CPF: " . $cliente['cpf'] . "- Email: " .$cliente['email'] . "</p>";
+                echo "<p>ID: " . $cliente['id'] . " - Nome: " . $cliente['nome'] . " - CPF: " . $cliente['cpf'] . " - Email: " .$cliente['email'] . "</p>";
             }
             else{
                 echo "Erro ao exibir dados do cliente: " . $nomeCliente;

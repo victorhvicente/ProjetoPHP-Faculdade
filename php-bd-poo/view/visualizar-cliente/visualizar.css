@@ -96,3 +96,7 @@ p {
 ul {
     list-style-type: none;
 }
+
+.li-cli {
+    margin: 12px;
+}
