@@ -7,6 +7,20 @@
     <title>Formulário de Cadastro</title>
 </head>
 <body>
+
+    <nav id="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="form_inserir.php">Cadastrar Cliente</a></li>
+            <li><a href="../visualizar-cliente/visualizarTodos.php">Buscar Todos os Clientes</a></li>
+            <li><a href="../visualizar-cliente/visualizarClienteNome.php">Buscar Cliente por Nome</a></li>
+            <li><a href="../visualizar-cliente/visualizarClienteID.php">Buscar Cliente por ID</a></li>
+            <li><a href="../atualizarDados-cliente/atualizarDados.php">Atualizar Dados Cliente</a></li>
+            <li><a href="../deletarDados/deletarDados.php">Deletar Cliente</a></li>
+        </ul>
+    </nav>
+
+
     <div class="container">
         <h1>Cadastrar Cliente</h1>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-cadastro">

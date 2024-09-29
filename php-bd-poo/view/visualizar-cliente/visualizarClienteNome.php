@@ -7,13 +7,26 @@
     <title>Buscar cliente pelo nome</title>
 </head>
 <body>
+
+    <nav id="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="../inserir-cliente/form_inserir.php">Cadastrar Cliente</a></li>
+            <li><a href="visualizarTodos.php">Buscar Todos os Clientes</a></li>
+            <li><a href="visualizarClienteNome.php">Buscar Cliente por Nome</a></li>
+            <li><a href="visualizarClienteID.php">Buscar Cliente por ID</a></li>
+            <li><a href="../atualizarDados-cliente/atualizarDados.php">Atualizar Dados Cliente</a></li>
+            <li><a href="../deletarDados/deletarDados.php">Deletar Cliente</a></li>
+        </ul>
+    </nav>
+
     <div id="listaClientes">
 
         <form method="POST" action="" >
             <h2>Informe o nome do cliente</h2>
 
             <input type="text" id="nome" name="nome" placeholder="Nome do cliente" ><br><br>
-            <button type="submite">Buscar Cliente</button>
+            <button type="submit">Buscar Cliente</button>
         </form>
 
         <?php 

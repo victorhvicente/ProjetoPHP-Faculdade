@@ -7,31 +7,45 @@
     <title>Buscar Todos os Clientes</title>
 </head>
 <body>
+
+    <nav id="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="../inserir-cliente/form_inserir.php">Cadastrar Cliente</a></li>
+            <li><a href="visualizarTodos.php">Buscar Todos os Clientes</a></li>
+            <li><a href="visualizarClienteNome.php">Buscar Cliente por Nome</a></li>
+            <li><a href="visualizarClienteID.php">Buscar Cliente por ID</a></li>
+            <li><a href="../atualizarDados-cliente/atualizarDados.php">Atualizar Dados Cliente</a></li>
+            <li><a href="../deletarDados/deletarDados.php">Deletar Cliente</a></li>
+        </ul>
+    </nav>
+
     <div id="listaClientes">
-
-    <h2>Lista de Clientes</h2>
+        <h2>Lista de Clientes</h2>
         <?php
+            require_once "../../Database.php";
 
-        require_once "../../Database.php";
+            $localHost = 'localhost';
+            $nomeBD = 'banco_sistema';
+            $user = 'root';
+            $senha = '';
 
-        $localHost = 'localhost';
-        $nomeBD = 'banco_sistema';
-        $user = 'root';
-        $senha = '';
+            $bd = new Database($localHost, $nomeBD, $user, $senha);
+            $conexao = $bd->getConnection();
 
-        $bd = new Database($localHost, $nomeBD, $user, $senha );
-        $conexao = $bd->getConnection();
+            $bdClientes = new DBClientes($conexao);
 
-        $bdClientes = new DBClientes($conexao);
+            $listaClientes = $bdClientes->recovery();
 
-        $listaClientes = $bdClientes->recovery();
-
-        echo "<ul>";
-        foreach($listaClientes as $cliente) {
-            echo "<li>ID: " . $cliente['id'] . " - Nome: " . $cliente['nome'] . " - CPF: " . $cliente['cpf'] . " - Email: " . $cliente['email'] . "</li>";
-        }
-        echo "</ul>";
-
+            if (!empty($listaClientes)) {
+                echo "<ul>";
+                foreach ($listaClientes as $cliente) {
+                    echo "<li>ID: " . $cliente['id'] . " - Nome: " . $cliente['nome'] . " - CPF: " . $cliente['cpf'] . " - Email: " . $cliente['email'] . "</li>";
+                }
+                echo "</ul>";
+            } else {
+                echo "<p>Nenhum cliente encontrado.</p>";
+            }
         ?>
     </div>
 </body>
