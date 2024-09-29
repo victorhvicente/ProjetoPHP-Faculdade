@@ -154,7 +154,25 @@ class DBClientes {
     }
 
     public function delete($id) {
-        // excluir do banco o cliente com id - DELETE
+        $query = " DELETE FROM " . $this->tableName . " WHERE id = :id ";
+
+        try{
+            $result = $this->conexao->prepare($query);
+            
+            $result->bindParam(":id", $id);
+
+            $result->execute();
+
+            if($result->rowCount() > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        catch(PDOExcepition $e){
+            echo "Erro ao apagar dados do cliente. " . $e->getMessage();
+        }
     }
 }
 
