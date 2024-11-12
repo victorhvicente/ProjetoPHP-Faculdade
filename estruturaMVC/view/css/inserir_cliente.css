@@ -1,0 +1,110 @@
+/* Estilo global para o corpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Estilo do contêiner do formulário */
+form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Títulos e labels */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Estilo para os campos de entrada */
+input[type="number"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+/* Remover as bordas de foco nos inputs (quando clicados) */
+input:focus {
+    outline: none;
+    border-color: #4CAF50;  /* Cor do contorno quando em foco (opcional) */
+}
+
+/* Remover as setas de incremento/decremento no campo number */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;  /* Para Firefox */
+    appearance: none;  /* Para outros navegadores */
+}
+
+/* Estilo para o botão de envio */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+/* Estilo do botão quando o mouse passa sobre ele */
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Estilo para mensagens de erro ou sucesso */
+.error, .success {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    display: none;
+}
+
+/* Estilo para mensagem de erro */
+.error {
+    background-color: #f44336;
+}
+
+/* Estilo para mensagem de sucesso */
+.success {
+    background-color: #4CAF50;
+}
+
