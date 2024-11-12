@@ -19,7 +19,8 @@
         <tbody>
             <?php
 
-            require_once $_SERVER['DOCUMENT_ROOT'] . '/aulaMVC/controller/ClienteController.php';
+            require_once('C:/xampp/htdocs/eletivaPHP/estruturaMVC/controller/ClienteController.php');
+
 
             while ($cliente = $clientes->fetch(PDO::FETCH_ASSOC)) { 
                 echo "<tr> <!-- um cliente -->"

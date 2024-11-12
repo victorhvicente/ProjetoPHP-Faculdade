@@ -1,6 +1,10 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/aulaMVC/model/Database.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/aulaMVC/model/Cliente.php';
+
+require_once('C:/xampp/htdocs/eletivaPHP/estruturaMVC/model/Database.php');
+
+require_once('C:/xampp/htdocs/eletivaPHP/estruturaMVC/model/Cliente.php');
+
+
 
 
 class ClienteController {
