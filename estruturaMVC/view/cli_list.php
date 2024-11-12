@@ -10,24 +10,22 @@
     <table>
         <thead>
             <tr>
-                <tt>id</tt>
-                <tt>nome</tt>
-                <tt>email</tt>
-                <tt>telefone</tt>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
             </tr>
         </thead>
         <tbody>
             <?php
-
             require_once('C:/xampp/htdocs/eletivaPHP/estruturaMVC/controller/ClienteController.php');
 
-
-            while ($cliente = $clientes->fetch(PDO::FETCH_ASSOC)) { 
-                echo "<tr> <!-- um cliente -->"
-                    . "<td>".$cliente['id']."</td>"
-                    . "<td>".$cliente['nome']."</td>"
-                    . "<td>".$cliente['email']."</td>"
-                    . "<td>".$cliente['telefone']."</td>"
+            foreach ($clientes as $cliente) { 
+                echo "<tr>"
+                    . "<td>" . $cliente['id'] . "</td>"
+                    . "<td>" . $cliente['nome'] . "</td>"
+                    . "<td>" . $cliente['email'] . "</td>"
+                    . "<td>" . $cliente['telefone'] . "</td>"
                     . "</tr>"; 
             }
             ?>
